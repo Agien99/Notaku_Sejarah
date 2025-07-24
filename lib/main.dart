@@ -59,10 +59,14 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: const Text('Notaku Sejarah'),
+          title: Image.asset(
+            'images/notaku_sejarah_logo.png',
+            height: 130, // Adjust height as needed
+          ),
           centerTitle: true,
           backgroundColor: Colors.transparent,
           elevation: 0,
+          toolbarHeight: 150, // Increased toolbar height
         ),
         body: Center(
           child: _widgetOptions.elementAt(_selectedIndex),
@@ -85,6 +89,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-
-
