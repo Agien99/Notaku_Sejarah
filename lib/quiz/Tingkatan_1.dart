@@ -1,7 +1,7 @@
 /// Soalan Kuiz Sejarah Tingkatan 1
 /// Format: List<Map> untuk setiap Bab (Bab 1 hingga Bab 8)
 
-const Map<String, List<Map<String, dynamic>>> sejarahKuiz = {
+const Map<String, List<Map<String, dynamic>>> sejarahKuizTingkatan1 = {
   'Bab 1': [
     {"soalan": "Zaman prasejarah merujuk kepada zaman sebelum...", "pilihan": ["Wujudnya logam", "Wujudnya sistem tulisan", "Wujudnya kerajaan", "Wujudnya agama"], "jawapan": "Wujudnya sistem tulisan"},
     {"soalan": "Zaman prasejarah terbahagi kepada berapa tahap?", "pilihan": ["Tiga", "Dua", "Empat", "Lima"], "jawapan": "Tiga"},
