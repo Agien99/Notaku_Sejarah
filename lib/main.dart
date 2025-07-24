@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'notes_screen.dart';
 import 'package:notaku_sejarah/tingkatan_quiz_screen.dart';
+import 'kredit_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,6 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
   static const List<Widget> _widgetOptions = <Widget>[
     NotesScreen(),
     TingkatanQuizScreen(),
+    KreditScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -80,6 +82,10 @@ class _MyHomePageState extends State<MyHomePage> {
             BottomNavigationBarItem(
               icon: Icon(Icons.question_answer),
               label: 'Kuiz',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.info),
+              label: 'Kredit',
             ),
           ],
           currentIndex: _selectedIndex,
