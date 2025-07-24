@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:notaku_sejarah/quiz_result_screen.dart';
 import 'package:notaku_sejarah/quiz/Tingkatan_1.dart';
+import 'package:notaku_sejarah/quiz/Tingkatan_2.dart';
+import 'package:notaku_sejarah/quiz/Tingkatan_3.dart';
 import 'dart:math';
+
+Map<String, List<Map<String, dynamic>>> getQuizData(String tingkatan) {
+  switch (tingkatan) {
+    case 'Tingkatan 1':
+      return sejarahKuizTingkatan1;
+    case 'Tingkatan 2':
+      return sejarahKuizTingkatan2;
+    case 'Tingkatan 3':
+      return sejarahKuizTingkatan3;
+    default:
+      return {}; // Or handle error appropriately
+  }
+}
 
 class QuizScreen extends StatelessWidget {
   final String tingkatan;
@@ -10,7 +25,8 @@ class QuizScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final babList = sejarahKuiz.keys.toList();
+    final currentSejarahKuiz = getQuizData(tingkatan);
+    final babList = currentSejarahKuiz.keys.toList();
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -99,8 +115,9 @@ class _QuizQuestionsScreenState extends State<QuizQuestionsScreen> {
     super.initState();
     final Random random = Random();
 
+    final currentSejarahKuiz = getQuizData(widget.tingkatan);
     List<Map<String, dynamic>> allQuestions =
-        List<Map<String, dynamic>>.from(sejarahKuiz[widget.bab]!.map((question) {
+        List<Map<String, dynamic>>.from(currentSejarahKuiz[widget.bab]!.map((question) {
       return {
         'soalan': question['soalan'],
         'pilihan': List<String>.from(question['pilihan'] as List<String>),
@@ -155,39 +172,43 @@ class _QuizQuestionsScreenState extends State<QuizQuestionsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: Stack(
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("images/background.jpg"),
-                fit: BoxFit.cover,
+    return WillPopScope(
+      onWillPop: () async => false, // Prevents back navigation
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Stack(
+          children: [
+            Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("images/background.jpg"),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: AppBar(
-              title: Text('Kuiz ${widget.bab}'),
-              backgroundColor: Colors.transparent,
-              elevation: 0.0,
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: AppBar(
+                title: Text('Kuiz ${widget.bab}'),
+                backgroundColor: Colors.transparent,
+                elevation: 0.0,
+                automaticallyImplyLeading: false,
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: kToolbarHeight + 20.0),
-            child: _questionIndex < _questions.length
-                ? Quiz(
-                    answerQuestion: _answerQuestion,
-                    questionIndex: _questionIndex,
-                    questions: _questions,
-                  )
-                : Result(_score, _resetQuiz),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.only(top: kToolbarHeight + 20.0),
+              child: _questionIndex < _questions.length
+                  ? Quiz(
+                      answerQuestion: _answerQuestion,
+                      questionIndex: _questionIndex,
+                      questions: _questions,
+                    )
+                  : Result(_score, _resetQuiz),
+            ),
+          ],
+        ),
       ),
     );
   }

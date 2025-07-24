@@ -63,7 +63,7 @@ class NotesScreen extends StatelessWidget {
                   Text(
                     topic.split(' ')[0],
                     style: const TextStyle(
-                      fontSize: 28,
+                      fontSize: 32,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
@@ -71,7 +71,7 @@ class NotesScreen extends StatelessWidget {
                   Text(
                     topic.split(' ')[1],
                     style: const TextStyle(
-                      fontSize: 28,
+                      fontSize: 32,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),

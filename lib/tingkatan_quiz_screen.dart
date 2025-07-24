@@ -31,13 +31,17 @@ class _TingkatanQuizScreenState extends State<TingkatanQuizScreen>
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
-        title: const Text('Kuiz'),
         backgroundColor: Colors.transparent,
         elevation: 0,
+        toolbarHeight: 40, // Reduced height
         bottom: TabBar(
           controller: _tabController,
+          labelColor: Colors.blueAccent,
+          unselectedLabelColor: Colors.blueGrey,
+          indicatorColor: Colors.blueAccent,
+          labelStyle: const TextStyle(fontWeight: FontWeight.bold),
           tabs: const [
-            Tab(text: 'Pilih Tingkatan'),
+            Tab(text: 'Jawab Kuiz'),
             Tab(text: 'Rekod Kuiz'),
           ],
         ),
@@ -46,14 +50,14 @@ class _TingkatanQuizScreenState extends State<TingkatanQuizScreen>
         controller: _tabController,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 _buildTingkatanButton(context, 'Tingkatan 1'),
-                _buildTingkatanButton(context, 'Tingkatan 2', isDisabled: true),
-                _buildTingkatanButton(context, 'Tingkatan 3', isDisabled: true),
+                _buildTingkatanButton(context, 'Tingkatan 2'),
+                _buildTingkatanButton(context, 'Tingkatan 3'),
                 _buildTingkatanButton(context, 'Tingkatan 4', isDisabled: true),
                 _buildTingkatanButton(context, 'Tingkatan 5', isDisabled: true),
               ],
@@ -63,7 +67,7 @@ class _TingkatanQuizScreenState extends State<TingkatanQuizScreen>
             itemCount: 5,
             itemBuilder: (context, index) {
               final tingkatan = 'Tingkatan ${index + 1}';
-              final bool isDisabled = index >= 1; // Tingkatan 2, 3, 4, 5 are disabled
+              final bool isDisabled = index >= 3; // Tingkatan 4, 5 are disabled
               return _buildTingkatanButton(context, tingkatan, isDisabled: isDisabled, isHistory: true);
             },
           ),
@@ -103,7 +107,7 @@ class _TingkatanQuizScreenState extends State<TingkatanQuizScreen>
               Image.asset(
                   'images/buttons/Tingkatan.png',
                   width: double.infinity,
-                  height: 80,
+                  height: 100,
                   fit: BoxFit.cover,
                 ),
                 Column(
@@ -112,7 +116,7 @@ class _TingkatanQuizScreenState extends State<TingkatanQuizScreen>
                     Text(
                       topic.split(' ')[0],
                       style: const TextStyle(
-                        fontSize: 24,
+                        fontSize: 32,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
@@ -120,7 +124,7 @@ class _TingkatanQuizScreenState extends State<TingkatanQuizScreen>
                     Text(
                       topic.split(' ')[1],
                       style: const TextStyle(
-                        fontSize: 24,
+                        fontSize: 32,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
