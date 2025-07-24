@@ -1,2 +1,12 @@
-# Notaku_Sejarah
-In root folder, there should be /notes folder for notes. But since the note file size is more than 100MB, unable to push to github. Notes will be keep in other platform like Gdrive. (eg. "/notes/Tingkatan 1.pdf")
+To upload large files (more than 100MB)
+1. run command 'git lfs install'
+2. Wait for these notification in cmd:
+    Updated Git hooks.
+    Git LFS initialized.
+3. then run comman 'git lfs track "*.pdf"'
+4. wait for this prompt:
+    Tracking "*.pdf"
+5. run command 'git lfs push --all origin main'
+6. run command 'git add .'
+7. run command 'git commit -m "Push .pdf file that more than 100MB"'
+8. run command 'git add origin main'
