@@ -117,10 +117,3 @@ app.*.symbols
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 !/dev/ci/**/Gemfile.lock
-
-#notes
-/notes/Tingkatan 1.pdf
-/notes/Tingkatan 2.pdf
-/notes/Tingkatan 3.pdf
-/notes/Tingkatan 4.pdf
-/notes/Tingkatan 5.pdf
