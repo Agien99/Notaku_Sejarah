@@ -1,1 +1,2 @@
 # Notaku_Sejarah
+In root folder, there should be /notes folder for notes. But since the note file size is more than 100MB, unable to push to github. Notes will be keep in other platform like Gdrive. (eg. "/notes/Tingkatan 1.pdf")
